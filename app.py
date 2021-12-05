@@ -1,6 +1,6 @@
 import os
 import uuid
-from flask import Flask
+import flask
 import urllib
 from PIL import Image
 from tensorflow.keras.models import load_model
@@ -18,7 +18,6 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1] in ALLOWED_EXT
 
 classes = ['airplane' ,'automobile', 'bird' , 'cat' , 'deer' ,'dog' ,'frog', 'horse' ,'ship' ,'truck']
-
 
 def predict(filename , model):
     img = load_img(filename , target_size = (32 , 32))
@@ -46,9 +45,7 @@ def predict(filename , model):
 
     return class_result , prob_result
 
-
-
-
+app = Flask(__name__)
 @app.route('/')
 def home():
         return render_template("index.html")
@@ -123,4 +120,6 @@ def success():
 if __name__ == "__main__":
     app.run(debug = True)
 
-
+#@app.route('/')
+#def hello_world():
+#    return 'Hello Agusv'
