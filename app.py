@@ -83,7 +83,7 @@ def success():
 
             except Exception as e : 
                 print(str(e))
-                error = 'This image from this site is not accesible or inappropriate input'
+                error = 'Gambar input tidak benar'
 
             if(len(error) == 0):
                 return  render_template('success.html' , img  = img , predictions = predictions)
@@ -110,7 +110,7 @@ def success():
                 }
 
             else:
-                error = "Please upload images of jpg , jpeg and png extension only"
+                error = "Please Upload gambar dengan format jpg,jpeg,png"
 
             if(len(error) == 0):
                 return  render_template('success.html' , img  = img , predictions = predictions)
